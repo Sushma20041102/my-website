@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushma Kelli - Personal Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 215, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link.linkedin:hover {
+            background: rgba(0, 119, 181, 0.3);
+            border-color: #0077b5;
+        }
+
+        .social-link.github:hover {
+            background: rgba(51, 51, 51, 0.3);
+            border-color: #333;
+        }
+
+        .social-link.leetcode:hover {
+            background: rgba(255, 193, 7, 0.3);
+            border-color: #ffc107;
+        }
+
+        .social-link.codechef:hover {
+            background: rgba(92, 67, 45, 0.3);
+            border-color: #5c432d;
+        }
+
+        .social-link.gfg:hover {
+            background: rgba(46, 125, 50, 0.3);
+            border-color: #2e7d32;
+        }
+
+        /* Coding Platforms Section */
+        .coding-platforms {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .coding-platforms h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .platform-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .platform-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .platform-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .platform-link.leetcode:hover {
+            background: rgba(255, 193, 7, 0.3);
+            border-color: #ffc107;
+        }
+
+        .platform-link.codechef:hover {
+            background: rgba(92, 67, 45, 0.3);
+            border-color: #5c432d;
+        }
+
+        .platform-link.gfg:hover {
+            background: rgba(46, 125, 50, 0.3);
+            border-color: #2e7d32;
+        }
+
+        /* Project Links */
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-header {
+            height: 200px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .social-links {
+                gap: 10px;
+            }
+
+            .social-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .platform-links {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://www.linkedin.com/in/kelli-sushma-a86697291" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/Sushma20041102" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sushma Kelli</h1>
+            <p>AI/ML Engineer & Data Scientist</p>
+            <a href="#about" class="cta-button">Discover My Work</a>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/kelli-sushma-a86697291" target="_blank" class="social-link linkedin">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/Sushma20041102" target="_blank" class="social-link github">
+                    💻 GitHub</a>
+            </div>
+        </div>
+        <!-- Floating Particles -->
+        <div class="particle" style="width: 10px; height: 10px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 15px; height: 15px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; top: 40%; left: 20%; animation-delay: 4s;"></div>
+        <div class="particle" style="width: 12px; height: 12px; top: 80%; left: 60%; animation-delay: 1s;"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="profile-card">
+                <div class="profile-pic">
+                    <img src="profile.jpg" alt="Sushma Kelli" />
+                </div>
+                <h3>Hello! I'm Sushma Kelli</h3>
+                <p>AI/ML Engineer • Visakhapatnam, India</p>
+            </div>
+            <div>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 20px;">
+                    Welcome to my digital space! I'm a creative AI/ML engineer who loves crafting intelligent solutions and solving complex problems. With expertise in machine learning, deep learning, and data science, I bring innovative ideas to life through technology.
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    Currently pursuing B.Tech in Computer Science (AI-ML) with a CGPA of 9.23. I've completed internships at EduSkills and Accenture, gaining hands-on experience in AI/ML and data analytics.
+                </p>
+                
+                <div class="coding-platforms">
+                    <h4>🏆 Programming Platforms</h4>
+                    <div class="platform-links">
+                        <a href="https://leetcode.com/u/S2323/" target="_blank" class="platform-link leetcode">
+                            🧩 LeetCode
+                        </a>
+                        <a href="https://www.codechef.com/users/zest_hearth_14" target="_blank" class="platform-link codechef">
+                            👨‍🍳 CodeChef
+                        </a>
+                        <a href="https://www.geeksforgeeks.org/user/kellisok7b" target="_blank" class="platform-link gfg">
+                            💚 GeeksforGeeks
+                        </a>
+                        <a href="https://www.hackerrank.com/profile/sushmakelli" target="_blank" class="platform-link">
+                            🎯 HackerRank
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🧠</div>
+                <h3>Machine Learning</h3>
+                <p>NumPy, Pandas, Matplotlib, Scikit-learn, Random Forest, CNN</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🤖</div>
+                <h3>Deep Learning & AI</h3>
+                <p>Neural Networks, TensorFlow, Keras</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Programming Languages</h3>
+                <p>Python, C++, C, Java, SQL, JavaScript</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>Web Development</h3>
+                <p>HTML, CSS, Flask</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔒</div>
+                <h3>Cybersecurity</h3>
+                <p>Nmap, Malware Analysis,Firewall Config</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">✨</div>
+                <h3>Generative AI(Basics)</h3>
+                <p>Prompt Engineering, LLMs, Text Generation, AI Solutions</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Data Analytics</h3>
+                <p>Data Cleaning, Modeling, Visualization</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🗄️</div>
+                <h3>Databases & Tools</h3>
+                <p>MongoDB,  Git, Various ML Frameworks</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+     <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">🔍</div>
+                <div class="project-content">
+                    <h3>HireVista - AI Recruitment Platform</h3>
+                    <p>Designed and implemented an AI-powered recruitment platform to streamline candidate shortlisting with data-driven insights. Built with React.js, Flask, MongoDB, and Scikit-learn for intelligent candidate eligibility prediction.</p>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        <strong>Tech:</strong> React.js, Vite, TailwindCSS, Flask, MongoDB, Scikit-learn
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link" style="background: rgba(255,165,0,0.2); border-color: #ffa500; cursor: default;">
+                            🚧 Code Coming Soon
+                        </span>
+                        <span class="project-link" style="background: rgba(0,123,255,0.2); border-color: #007bff; cursor: default;">
+                            💼 Built for Internship
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">👁️</div>
+                <div class="project-content">
+                    <h3>Retinal Pigmentosa Detection</h3>
+                    <p>Developed a medical AI system using CNN to detect Retinal Pigmentosa in pediatric patients by analyzing retinal images. The system processes medical images and predicts disease likelihood for early diagnosis and treatment planning.</p>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        <strong>Tech:</strong> Python, Tkinter, SQLite, CNN, Image Processing
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link" style="background: rgba(255,165,0,0.2); border-color: #ffa500; cursor: default;">
+                            🚧 Repository Setup
+                        </span>
+                        <span class="project-link" style="background: rgba(220,53,69,0.2); border-color: #dc3545; cursor: default;">
+                            🏥 Medical AI Project
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">📰</div>
+                <div class="project-content">
+                    <h3>Fake News Detection System</h3>
+                    <p>Built a machine learning model achieving 99.6% accuracy in classifying news as real or fake using Random Forest algorithm. Created a web application that predicts authenticity of news articles with high precision.</p>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        <strong>Tech:</strong> Python, Flask, Random Forest, HTML, CSS, ML
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Sushma20041102/Fake_news_detection-using-Random-Forest" target="_blank" class="project-link">🔗 GitHub</a>
+                        <span class="project-link" style="background: rgba(40,167,69,0.2); border-color: #28a745; cursor: default;">
+                            📈 99.6% Accuracy
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section id="contact" class="section">
+    <h2>Get In Touch</h2>
+    <div class="contact-form">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">Let's connect and discuss opportunities!</p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/kelli-sushma-a86697291" 
+                   target="_blank" 
+                   class="social-link linkedin">
+                    💼 LinkedIn
+                </a>
+            </div>
+
+            <!-- Email displayed as plain text -->
+            <p style="margin-top: 10px; color: rgba(255,255,255,0.9);">
+                📧 Email: <strong>kellisushma@gmail.com</strong>
+            </p>
+
+            <p style="margin: 25px 0; color: rgba(255,255,255,0.8);">Or send me a message:</p>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+            <textarea rows="6" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+    </div>
+</section>
+
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.2)';
+                nav.style.backdropFilter = 'blur(30px)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.1)';
+                nav.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // Form submission
+        document.querySelector('button[type="submit"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Thanks for your message! This is a demo form.');
+        });
+
+        // Add animation on scroll for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.skill-card, .project-card, .profile-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
